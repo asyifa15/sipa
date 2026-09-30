@@ -1,0 +1,1911 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FinDana - Demo website layanan pinjaman online modern dan responsif.">
+    <meta name="theme-color" content="#2563eb">
+    <title>FinDana - Pinjaman Online</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --accent: #22c55e;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --gray: #64748b;
+            --border: #e2e8f0;
+            --danger: #ef4444;
+            --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+            --radius: 18px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--light);
+            color: var(--secondary);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        .container {
+            width: min(1120px, 92%);
+            margin: 0 auto;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 23px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--primary);
+            color: white;
+            display: grid;
+            place-items: center;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            color: #475569;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-button {
+            padding: 11px 18px;
+            background: var(--primary);
+            color: white !important;
+            border-radius: 10px;
+        }
+
+        .menu-toggle {
+            display: none;
+            border: 0;
+            background: transparent;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            padding: 90px 0 70px;
+            background:
+                radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.12), transparent 35%),
+                linear-gradient(180deg, #ffffff, #f8fafc);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: #dbeafe;
+            color: var(--primary-dark);
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 6vw, 68px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            max-width: 610px;
+            color: var(--gray);
+            font-size: 17px;
+            margin-bottom: 30px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+        }
+
+        .btn {
+            border: 0;
+            cursor: pointer;
+            padding: 14px 22px;
+            border-radius: 12px;
+            font-weight: 700;
+            transition: 0.25s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border);
+            background: white;
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .hero-card {
+            background: white;
+            padding: 28px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .hero-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .hero-card-title {
+            font-weight: 700;
+        }
+
+        .verified {
+            color: var(--accent);
+            font-size: 13px;
+        }
+
+        .amount {
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 12px 0 24px;
+        }
+
+        .mini-row {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--border);
+            padding: 14px 0;
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .mini-row strong {
+            color: var(--secondary);
+        }
+
+        /* ================= FEATURES ================= */
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 45px;
+        }
+
+        .section-heading span {
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-heading h2 {
+            font-size: 38px;
+            line-height: 1.2;
+            margin: 10px 0 14px;
+        }
+
+        .section-heading p {
+            color: var(--gray);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            display: grid;
+            place-items: center;
+            border-radius: 15px;
+            background: #eff6ff;
+            color: var(--primary);
+            font-size: 23px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 9px;
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        /* ================= CALCULATOR ================= */
+
+        .calculator-section {
+            background: #eff6ff;
+        }
+
+        .calculator {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: var(--shadow);
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-prefix {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 14px 14px;
+            border: 1px solid var(--border);
+            border-radius: 11px;
+            outline: none;
+            background: white;
+            color: var(--secondary);
+        }
+
+        .input-wrapper input {
+            padding-left: 43px;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .result-box {
+            height: 100%;
+            padding: 25px;
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+
+        .result-box h3 {
+            margin-bottom: 20px;
+        }
+
+        .result-main {
+            font-size: 35px;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 11px 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .result-item:last-child {
+            border-bottom: 0;
+        }
+
+        .result-item strong {
+            color: var(--secondary);
+        }
+
+        /* ================= STEPS ================= */
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .step {
+            position: relative;
+            padding: 25px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            margin-bottom: 17px;
+        }
+
+        .step h3 {
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        /* ================= SAFETY ================= */
+
+        .safety {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .safety-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .safety .section-heading {
+            text-align: left;
+            margin: 0;
+        }
+
+        .safety .section-heading span {
+            color: #60a5fa;
+        }
+
+        .safety .section-heading p {
+            color: #cbd5e1;
+        }
+
+        .safety-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .safety-item {
+            display: flex;
+            gap: 15px;
+            padding: 18px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            background: rgba(255,255,255,0.04);
+        }
+
+        .safety-check {
+            color: #4ade80;
+            font-size: 20px;
+        }
+
+        .safety-item h4 {
+            margin-bottom: 4px;
+        }
+
+        .safety-item p {
+            color: #cbd5e1;
+            font-size: 13px;
+        }
+
+        /* ================= FAQ ================= */
+
+        .faq {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .faq-item {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            border: 0;
+            background: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            text-align: left;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 20px 20px;
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-icon {
+            transition: 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        /* ================= CTA ================= */
+
+        .cta {
+            padding: 80px 0;
+        }
+
+        .cta-box {
+            padding: 55px;
+            background:
+                linear-gradient(135deg, #2563eb, #1e40af);
+            border-radius: 25px;
+            color: white;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .cta-box h2 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .cta-box p {
+            max-width: 600px;
+            margin: 0 auto 25px;
+            color: #dbeafe;
+        }
+
+        .cta-box .btn {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #020617;
+            color: white;
+            padding: 60px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+
+        .footer-brand p {
+            color: #94a3b8;
+            margin-top: 15px;
+            font-size: 14px;
+            max-width: 330px;
+        }
+
+        .footer-title {
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            display: grid;
+            gap: 9px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            border-top: 1px solid #1e293b;
+            padding-top: 22px;
+            text-align: center;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        /* ================= MODAL ================= */
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(2, 6, 23, 0.65);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            width: min(500px, 100%);
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            animation: modalIn 0.25s ease;
+        }
+
+        @keyframes modalIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            border: 0;
+            background: transparent;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 8px;
+        }
+
+        .modal-content p {
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 22px;
+        }
+
+        .notice {
+            padding: 13px;
+            background: #fef3c7;
+            color: #92400e;
+            border-radius: 10px;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+            .hero-grid,
+            .safety-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero {
+                padding-top: 60px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                left: 4%;
+                right: 4%;
+                top: 75px;
+                background: white;
+                padding: 20px;
+                border-radius: 15px;
+                box-shadow: var(--shadow);
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 10px;
+            }
+
+            .feature-grid,
+            .calculator-grid,
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-heading h2,
+            .cta-box h2 {
+                font-size: 30px;
+            }
+
+            .calculator,
+            .cta-box {
+                padding: 25px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+            }
+
+            .amount {
+                font-size: 31px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+        <div class="container navbar">
+
+            <a href="#" class="logo">
+                <span class="logo-icon">F</span>
+                <span>FinDana</span>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li>
+                    <a href="#beranda">Beranda</a>
+                </li>
+                <li>
+                    <a href="#fitur">Fitur</a>
+                </li>
+                <li>
+                    <a href="#simulator">Simulasi</a>
+                </li>
+                <li>
+                    <a href="#cara">Cara Kerja</a>
+                </li>
+                <li>
+                    <a href="#faq">FAQ</a>
+                </li>
+                <li>
+                    <a href="#simulator" class="nav-button">Mulai Simulasi</a>
+                </li>
+            </ul>
+
+        </div>
+    </header>
+
+    <!-- ================= HERO ================= -->
+
+    <main>
+
+        <section class="hero" id="beranda">
+            <div class="container hero-grid">
+
+                <div class="hero-content">
+
+                    <div class="badge">
+                        ● Platform Demo Finansial
+                    </div>
+
+                    <h1>
+                        Rencanakan Dana
+                        <span>Dengan Lebih Mudah.</span>
+                    </h1>
+
+                    <p>
+                        Gunakan simulator pinjaman FinDana untuk memperkirakan
+                        jumlah cicilan berdasarkan nominal dan jangka waktu
+                        yang Anda pilih.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#simulator" class="btn btn-primary">
+                            Hitung Cicilan
+                        </a>
+
+                        <a href="#cara" class="btn btn-outline">
+                            Pelajari Cara Kerja
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="hero-card">
+
+                    <div class="hero-card-top">
+                        <div class="hero-card-title">
+                            Contoh Simulasi
+                        </div>
+
+                        <div class="verified">
+                            ✓ Transparan
+                        </div>
+                    </div>
+
+                    <div>
+                        <small>Estimasi dana</small>
+
+                        <div class="amount">
+                            Rp10.000.000
+                        </div>
+                    </div>
+
+                    <div class="mini-row">
+                        <span>Tenor</span>
+                        <strong>12 bulan</strong>
+                    </div>
+
+                    <div class="mini-row">
+                        <span>Estimasi cicilan</span>
+                        <strong>Rp1.000.000/bln</strong>
+                    </div>
+
+                    <div class="mini-row">
+                        <span>Status</span>
+                        <strong>Contoh simulasi</strong>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= FEATURES ================= -->
+
+        <section class="section" id="fitur">
+
+            <div class="container">
+
+                <div class="section-heading">
+                    <span>Keunggulan</span>
+
+                    <h2>
+                        Fitur untuk membantu perencanaan dana
+                    </h2>
+
+                    <p>
+                        Semua informasi pada halaman ini ditujukan sebagai
+                        contoh tampilan dan simulasi finansial.
+                    </p>
+                </div>
+
+                <div class="feature-grid">
+
+                    <article class="feature-card">
+                        <div class="feature-icon">⚡</div>
+
+                        <h3>Proses Sederhana</h3>
+
+                        <p>
+                            Antarmuka dirancang agar pengguna dapat memahami
+                            simulasi dana dengan cepat.
+                        </p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">🔒</div>
+
+                        <h3>Fokus Keamanan</h3>
+
+                        <p>
+                            Demo ini tidak menyimpan data pribadi maupun
+                            informasi rekening pengguna.
+                        </p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">📊</div>
+
+                        <h3>Simulasi Transparan</h3>
+
+                        <p>
+                            Lihat estimasi cicilan berdasarkan nominal,
+                            tenor, dan bunga contoh.
+                        </p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">📱</div>
+
+                        <h3>Responsif</h3>
+
+                        <p>
+                            Tampilan dapat digunakan pada komputer,
+                            tablet, maupun smartphone.
+                        </p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">🧮</div>
+
+                        <h3>Kalkulator</h3>
+
+                        <p>
+                            Hitung estimasi pembayaran menggunakan
+                            kalkulator sederhana.
+                        </p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">💡</div>
+
+                        <h3>Informasi Jelas</h3>
+
+                        <p>
+                            Penjelasan dibuat sederhana agar mudah
+                            dipahami sebelum mengambil keputusan finansial.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ================= CALCULATOR ================= -->
+
+        <section class="section calculator-section" id="simulator">
+
+            <div class="container">
+
+                <div class="section-heading">
+                    <span>Simulator</span>
+
+                    <h2>
+                        Simulasi Cicilan
+                    </h2>
+
+                    <p>
+                        Hasil di bawah adalah simulasi ilustratif dan
+                        bukan penawaran kredit.
+                    </p>
+                </div>
+
+                <div class="calculator">
+
+                    <div class="calculator-grid">
+
+                        <div>
+
+                            <div class="form-group">
+                                <label for="loanAmount">
+                                    Jumlah Dana
+                                </label>
+
+                                <div class="input-wrapper">
+                                    <span class="input-prefix">Rp</span>
+
+                                    <input
+                                        type="number"
+                                        id="loanAmount"
+                                        value="10000000"
+                                        min="1000000"
+                                        max="100000000"
+                                        step="500000"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="loanTerm">
+                                    Jangka Waktu
+                                </label>
+
+                                <select id="loanTerm">
+                                    <option value="3">3 Bulan</option>
+                                    <option value="6">6 Bulan</option>
+                                    <option value="9">9 Bulan</option>
+                                    <option value="12" selected>
+                                        12 Bulan
+                                    </option>
+                                    <option value="18">18 Bulan</option>
+                                    <option value="24">24 Bulan</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="interest">
+                                    Bunga Contoh (% per bulan)
+                                </label>
+
+                                <div class="input-wrapper">
+                                    <input
+                                        type="number"
+                                        id="interest"
+                                        value="1.5"
+                                        min="0"
+                                        max="10"
+                                        step="0.1"
+                                    >
+                                </div>
+                            </div>
+
+                            <button
+                                class="btn btn-primary"
+                                id="calculateBtn"
+                                style="width:100%;"
+                            >
+                                Hitung Sekarang
+                            </button>
+
+                        </div>
+
+                        <div class="result-box">
+
+                            <h3>
+                                Estimasi Pembayaran
+                            </h3>
+
+                            <div class="result-main" id="monthlyPayment">
+                                Rp0
+                            </div>
+
+                            <div class="result-item">
+                                <span>Pokok pinjaman</span>
+                                <strong id="principalResult">
+                                    Rp0
+                                </strong>
+                            </div>
+
+                            <div class="result-item">
+                                <span>Total bunga</span>
+                                <strong id="interestResult">
+                                    Rp0
+                                </strong>
+                            </div>
+
+                            <div class="result-item">
+                                <span>Total pembayaran</span>
+                                <strong id="totalResult">
+                                    Rp0
+                                </strong>
+                            </div>
+
+                            <div class="result-item">
+                                <span>Tenor</span>
+                                <strong id="termResult">
+                                    0 bulan
+                                </strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ================= STEPS ================= -->
+
+        <section class="section" id="cara">
+
+            <div class="container">
+
+                <div class="section-heading">
+                    <span>Langkah</span>
+
+                    <h2>
+                        Cara Menggunakan Simulator
+                    </h2>
+
+                    <p>
+                        Ikuti beberapa langkah sederhana berikut.
+                    </p>
+                </div>
+
+                <div class="steps">
+
+                    <article class="step">
+                        <div class="step-number">1</div>
+
+                        <h3>
+                            Tentukan Dana
+                        </h3>
+
+                        <p>
+                            Masukkan nominal dana yang ingin
+                            Anda gunakan dalam simulasi.
+                        </p>
+                    </article>
+
+                    <article class="step">
+                        <div class="step-number">2</div>
+
+                        <h3>
+                            Pilih Tenor
+                        </h3>
+
+                        <p>
+                            Tentukan jangka waktu pembayaran
+                            sesuai kebutuhan simulasi.
+                        </p>
+                    </article>
+
+                    <article class="step">
+                        <div class="step-number">3</div>
+
+                        <h3>
+                            Lihat Estimasi
+                        </h3>
+
+                        <p>
+                            Sistem akan menghitung estimasi
+                            pembayaran berdasarkan input.
+                        </p>
+                    </article>
+
+                    <article class="step">
+                        <div class="step-number">4</div>
+
+                        <h3>
+                            Pertimbangkan
+                        </h3>
+
+                        <p>
+                            Gunakan hasil sebagai bahan pertimbangan,
+                            bukan sebagai persetujuan pinjaman.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ================= SAFETY ================= -->
+
+        <section class="section safety">
+
+            <div class="container safety-grid">
+
+                <div class="section-heading">
+
+                    <span>Informasi Penting</span>
+
+                    <h2>
+                        Pahami pinjaman sebelum menggunakannya
+                    </h2>
+
+                    <p>
+                        Pinjaman adalah kewajiban finansial. Pastikan
+                        Anda memahami biaya, tenor, dan kemampuan
+                        pembayaran sebelum mengajukan pinjaman.
+                    </p>
+
+                </div>
+
+                <div class="safety-list">
+
+                    <div class="safety-item">
+                        <div class="safety-check">✓</div>
+
+                        <div>
+                            <h4>
+                                Periksa biaya
+                            </h4>
+
+                            <p>
+                                Pastikan mengetahui bunga, biaya layanan,
+                                denda, dan biaya lain yang berlaku.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="safety-item">
+                        <div class="safety-check">✓</div>
+
+                        <div>
+                            <h4>
+                                Perhatikan kemampuan bayar
+                            </h4>
+
+                            <p>
+                                Jangan mengambil kewajiban pembayaran
+                                yang melebihi kemampuan keuangan Anda.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="safety-item">
+                        <div class="safety-check">✓</div>
+
+                        <div>
+                            <h4>
+                                Lindungi data pribadi
+                            </h4>
+
+                            <p>
+                                Jangan membagikan PIN, password, OTP,
+                                atau informasi sensitif kepada pihak lain.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="safety-item">
+                        <div class="safety-check">✓</div>
+
+                        <div>
+                            <h4>
+                                Periksa legalitas penyedia
+                            </h4>
+
+                            <p>
+                                Untuk layanan nyata, periksa status dan
+                                legalitas penyedia melalui sumber resmi
+                                regulator terkait.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ================= FAQ ================= -->
+
+        <section class="section" id="faq">
+
+            <div class="container">
+
+                <div class="section-heading">
+                    <span>Pertanyaan</span>
+
+                    <h2>
+                        Pertanyaan yang Sering Diajukan
+                    </h2>
+
+                    <p>
+                        Beberapa informasi dasar mengenai halaman demo ini.
+                    </p>
+                </div>
+
+                <div class="faq">
+
+                    <div class="faq-item">
+
+                        <button class="faq-question">
+                            <span>
+                                Apakah website ini bisa memberikan pinjaman?
+                            </span>
+
+                            <span class="faq-icon">+</span>
+                        </button>
+
+                        <div class="faq-answer">
+                            Tidak. Halaman ini merupakan template frontend
+                            dan simulator. Tidak ada proses pencairan
+                            pinjaman atau transaksi finansial.
+                        </div>
+
+                    </div>
+
+                    <div class="faq-item">
+
+                        <button class="faq-question">
+                            <span>
+                                Apakah hasil kalkulator merupakan penawaran?
+                            </span>
+
+                            <span class="faq-icon">+</span>
+                        </button>
+
+                        <div class="faq-answer">
+                            Tidak. Nilai yang ditampilkan hanya contoh
+                            perhitungan untuk kebutuhan desain dan
+                            simulasi.
+                        </div>
+
+                    </div>
+
+                    <div class="faq-item">
+
+                        <button class="faq-question">
+                            <span>
+                                Apakah data yang dimasukkan disimpan?
+                            </span>
+
+                            <span class="faq-icon">+</span>
+                        </button>
+
+                        <div class="faq-answer">
+                            Tidak. JavaScript pada halaman ini hanya
+                            melakukan perhitungan langsung di browser.
+                        </div>
+
+                    </div>
+
+                    <div class="faq-item">
+
+                        <button class="faq-question">
+                            <span>
+                                Apakah desain dapat dikembangkan?
+                            </span>
+
+                            <span class="faq-icon">+</span>
+                        </button>
+
+                        <div class="faq-answer">
+                            Ya. Template ini dapat dikembangkan menjadi
+                            dashboard, halaman produk, sistem autentikasi,
+                            atau aplikasi finansial sesuai kebutuhan.
+                        </div>
+
+                    </div>
+
+                    <div class="faq-item">
+
+                        <button class="faq-question">
+                            <span>
+                                Bagaimana jika ingin mengganti warna?
+                            </span>
+
+                            <span class="faq-icon">+</span>
+                        </button>
+
+                        <div class="faq-answer">
+                            Anda dapat mengubah variabel warna yang berada
+                            pada bagian :root di CSS.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ================= CTA ================= -->
+
+        <section class="cta">
+
+            <div class="container">
+
+                <div class="cta-box">
+
+                    <h2>
+                        Mulai dengan simulasi sederhana
+                    </h2>
+
+                    <p>
+                        Gunakan kalkulator untuk melihat gambaran
+                        pembayaran berdasarkan nominal dan tenor yang
+                        Anda pilih.
+                    </p>
+
+                    <a href="#simulator" class="btn">
+                        Buka Simulator
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+
+                    <div class="logo">
+                        <span class="logo-icon">F</span>
+                        <span style="color:white;">
+                            FinDana
+                        </span>
+                    </div>
+
+                    <p>
+                        Template website finansial untuk kebutuhan
+                        demonstrasi, pembelajaran, dan pengembangan
+                        frontend.
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <div class="footer-title">
+                        Navigasi
+                    </div>
+
+                    <ul class="footer-links">
+                        <li>
+                            <a href="#beranda">
+                                Beranda
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#fitur">
+                                Fitur
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#simulator">
+                                Simulator
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#faq">
+                                FAQ
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div>
+
+                    <div class="footer-title">
+                        Informasi
+                    </div>
+
+                    <ul class="footer-links">
+                        <li>
+                            <a href="#">
+                                Tentang Kami
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Kebijakan Privasi
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Syarat & Ketentuan
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Bantuan
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div>
+
+                    <div class="footer-title">
+                        Kontak
+                    </div>
+
+                    <ul class="footer-links">
+                        <li>
+                            <a href="#">
+                                Email
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Pusat Bantuan
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Media Sosial
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="copyright">
+                © <span id="year"></span> FinDana.
+                Template demo, bukan layanan pinjaman nyata.
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- ================= MODAL ================= -->
+
+    <div class="modal" id="modal">
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                id="modalClose"
+                aria-label="Tutup"
+            >
+                ×
+            </button>
+
+            <h2>
+                Simulasi Demo
+            </h2>
+
+            <p>
+                Halaman ini hanya contoh antarmuka dan tidak memproses
+                pengajuan pinjaman sungguhan.
+            </p>
+
+            <div class="notice">
+                Jangan memasukkan data sensitif seperti PIN, OTP,
+                password, atau nomor rekening ke dalam demo ini.
+            </div>
+
+            <button
+                class="btn btn-primary"
+                id="modalOk"
+                style="width:100%;"
+            >
+                Saya Mengerti
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("show");
+        });
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("show");
+            });
+        });
+
+        const loanAmount =
+            document.getElementById("loanAmount");
+
+        const loanTerm =
+            document.getElementById("loanTerm");
+
+        const interest =
+            document.getElementById("interest");
+
+        const calculateBtn =
+            document.getElementById("calculateBtn");
+
+        const monthlyPayment =
+            document.getElementById("monthlyPayment");
+
+        const principalResult =
+            document.getElementById("principalResult");
+
+        const interestResult =
+            document.getElementById("interestResult");
+
+        const totalResult =
+            document.getElementById("totalResult");
+
+        const termResult =
+            document.getElementById("termResult");
+
+        function formatRupiah(number) {
+            return new Intl.NumberFormat(
+                "id-ID",
+                {
+                    style: "currency",
+                    currency: "IDR",
+                    maximumFractionDigits: 0
+                }
+            ).format(number);
+        }
+
+        function calculateLoan() {
+
+            const principal =
+                Number(loanAmount.value) || 0;
+
+            const term =
+                Number(loanTerm.value) || 1;
+
+            const monthlyRate =
+                (Number(interest.value) || 0) / 100;
+
+            const totalInterest =
+                principal * monthlyRate * term;
+
+            const totalPayment =
+                principal + totalInterest;
+
+            const monthly =
+                totalPayment / term;
+
+            monthlyPayment.textContent =
+                formatRupiah(monthly);
+
+            principalResult.textContent =
+                formatRupiah(principal);
+
+            interestResult.textContent =
+                formatRupiah(totalInterest);
+
+            totalResult.textContent =
+                formatRupiah(totalPayment);
+
+            termResult.textContent =
+                term + " bulan";
+        }
+
+        calculateBtn.addEventListener(
+            "click",
+            calculateLoan
+        );
+
+        loanAmount.addEventListener(
+            "input",
+            calculateLoan
+        );
+
+        loanTerm.addEventListener(
+            "change",
+            calculateLoan
+        );
+
+        interest.addEventListener(
+            "input",
+            calculateLoan
+        );
+
+        /* ================= FAQ ================= */
+
+        const faqItems =
+            document.querySelectorAll(".faq-item");
+
+        faqItems.forEach(item => {
+
+            const question =
+                item.querySelector(".faq-question");
+
+            question.addEventListener("click", () => {
+
+                faqItems.forEach(otherItem => {
+
+                    if (otherItem !== item) {
+                        otherItem.classList.remove("active");
+                    }
+
+                });
+
+                item.classList.toggle("active");
+
+            });
+
+        });
+
+        /* ================= MODAL ================= */
+
+        const modal =
+            document.getElementById("modal");
+
+        const modalClose =
+            document.getElementById("modalClose");
+
+        const modalOk =
+            document.getElementById("modalOk");
+
+        function showModal() {
+            modal.classList.add("show");
+        }
+
+        function hideModal() {
+            modal.classList.remove("show");
+        }
+
+        document
+            .querySelectorAll(".nav-button, .hero-actions .btn-primary")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    event => {
+
+                        const href =
+                            button.getAttribute("href");
+
+                        if (href === "#simulator") {
+                            return;
+                        }
+
+                    }
+                );
+
+            });
+
+        modalClose.addEventListener(
+            "click",
+            hideModal
+        );
+
+        modalOk.addEventListener(
+            "click",
+            hideModal
+        );
+
+        modal.addEventListener(
+            "click",
+            event => {
+
+                if (event.target === modal) {
+                    hideModal();
+                }
+
+            }
+        );
+
+        /* ================= YEAR ================= */
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        /* ================= INITIAL CALCULATION ================= */
+
+        calculateLoan();
+
+        /* ================= KEYBOARD ================= */
+
+        document.addEventListener(
+            "keydown",
+            event => {
+
+                if (event.key === "Escape") {
+                    hideModal();
+                    navLinks.classList.remove("show");
+                }
+
+            }
+        );
+
+        /* ================= VALIDATION ================= */
+
+        loanAmount.addEventListener(
+            "change",
+            () => {
+
+                let value =
+                    Number(loanAmount.value);
+
+                if (value < 1000000) {
+                    value = 1000000;
+                }
+
+                if (value > 100000000) {
+                    value = 100000000;
+                }
+
+                loanAmount.value = value;
+
+                calculateLoan();
+
+            }
+        );
+
+        interest.addEventListener(
+            "change",
+            () => {
+
+                let value =
+                    Number(interest.value);
+
+                if (value < 0) {
+                    value = 0;
+                }
+
+                if (value > 10) {
+                    value = 10;
+                }
+
+                interest.value = value;
+
+                calculateLoan();
+
+            }
+        );
+    </script>
+
+</body>
+</html>
